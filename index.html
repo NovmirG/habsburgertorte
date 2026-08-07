@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Habsburger Torte — Kaiserliche Torte aus weißer Schokolade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+:root{
+  /* ===== Brand palette 60 / 30 / 10 =====
+     60 dominant #F7E1DA · 30 secondary #E0C6AF · 10 accent #A66B5A
+     Textfarben sind tonal aus der Akzentfamilie abgeleitet (Lesbarkeit, WCAG AA). */
+  --ivory:#F7E1DA; --cream:#E0C6AF; --paper:#FCF1EC;
+  --white-choc:#FCF1EC; --white-choc-2:#F2DCD4;
+  --espresso:#4F2F28; --espresso-soft:#744236;
+  --gold:#A66B5A; --gold-deep:#8A503F; --gold-light:#E7CDBE;
+  --citrus:#A66B5A; --lemon:#C98E76;
+  --line:rgba(166,107,90,.25);
+  /* semantic tokens */
+  --color-primary:var(--gold);
+  --color-primary-hover:#8A503F;
+  --color-primary-soft:rgba(166,107,90,.1);
+  --color-surface:var(--ivory);
+  --color-surface-tint:var(--cream);
+  --color-background:var(--ivory);
+  --color-text:var(--espresso);
+  --color-text-muted:var(--espresso-soft);
+  --color-text-inverse:#F7E1DA;
+  --color-text-inverse-muted:rgba(247,225,218,.76);
+  --color-border:var(--line);
+  --color-border-strong:rgba(166,107,90,.5);
+  --color-border-inverse:rgba(247,225,218,.26);
+  --color-focus:var(--gold-deep);
+  --color-shadow:rgba(79,47,40,.14);
+  --color-shadow-strong:rgba(79,47,40,.22);
+  --serif:'Cormorant Garamond',serif;
+  --sans:'Nunito Sans',sans-serif;
+  --nav-h:64px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--ivory);color:var(--espresso);font-family:var(--sans);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--color-primary);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+nav a:hover,#mnav a:hover,.foot-col a:hover,.brand:hover,.btn:hover,a.btn:hover{text-decoration:none}
+input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus,textarea:-webkit-autofill,select:-webkit-autofill{-webkit-box-shadow:0 0 0 100px var(--color-surface) inset;-webkit-text-fill-color:var(--color-text);caret-color:var(--color-text)}
+img{display:block;max-width:100%}
+::selection{background:var(--gold);color:#FFF6F2}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px;width:100%}
+.serif{font-family:var(--serif)}
+.eyebrow{font-family:var(--sans);font-weight:400;font-size:12px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold-deep)}
+.eyebrow::before{content:"";display:inline-block;width:26px;height:1px;background:var(--gold);vertical-align:middle;margin-right:14px;margin-bottom:3px}
+[data-page]{scroll-margin-top:var(--nav-h)}
+[data-page][hidden]{display:none}
+section{position:relative}
+.pad{padding:120px 0}
+.sec-head{max-width:640px;margin-bottom:60px}
+.sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.05;margin:18px 0 20px;letter-spacing:-.01em}
+.sec-head h2 em{font-style:italic;color:var(--gold-deep)}
+.sec-head p{color:var(--espresso-soft);font-size:16.5px;max-width:520px}
+.logo{width:44px;height:auto;flex:0 0 auto;color:var(--gold)}
+/* ---------- Intro ---------- */
+#intro{position:fixed;inset:0;z-index:400;background:var(--espresso);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .55s ease,visibility .55s ease}
+#intro.done{opacity:0;visibility:hidden}
+#intro .logo{width:96px;height:auto;opacity:0;animation:introUp .5s ease .05s forwards}
+#intro .crest{font-family:var(--serif);font-size:13px;letter-spacing:.5em;color:var(--gold-light);text-transform:uppercase;margin-top:22px;opacity:0;transform:translateY(10px);animation:introUp .5s ease .18s forwards}
+#intro h1{font-family:var(--serif);font-weight:500;color:var(--ivory);font-size:clamp(36px,7vw,84px);margin:12px 0 26px;letter-spacing:.02em;opacity:0;transform:translateY(16px);animation:introUp .55s ease .32s forwards;text-align:center;padding:0 20px}
+#intro .bar{width:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-light),transparent);animation:introBar 1.35s ease-in-out .5s forwards}
+@keyframes introUp{to{opacity:1;transform:none}}
+@keyframes introBar{0%{width:0}42%{width:280px}58%{width:280px}100%{width:0}}
+/* ---------- Nav ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .5s ease,padding .5s ease,box-shadow .5s ease,color .5s ease;padding:18px 0;color:var(--ivory)}
+header.solid{background:rgba(247,225,218,.95);backdrop-filter:blur(12px);padding:11px 0;box-shadow:0 1px 0 var(--line);color:var(--espresso)}
+header:not(.solid) .logo{color:var(--gold-light)}
+header .bar{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:.04em;color:inherit;display:flex;align-items:center;gap:11px;white-space:nowrap}
+.brand:hover{color:inherit}
+nav ul{display:flex;gap:30px;list-style:none;align-items:center}
+nav a{font-size:12px;letter-spacing:.15em;text-transform:uppercase;font-weight:400;position:relative;padding:4px 0;color:inherit}
+nav a:hover{color:inherit}
+nav a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .4s cubic-bezier(.7,0,.2,1)}
+nav a:hover::after,nav a.active::after{transform:scaleX(1);transform-origin:left}
+header.solid nav a:hover,header.solid nav a.active,header.solid .brand:hover{color:var(--gold-deep)}
+.nav-ctrl{display:flex;align-items:center;gap:14px}
+.cart-btn{position:relative;cursor:pointer;background:none;border:none;color:inherit;padding:4px;display:flex}
+.cart-btn svg{width:22px;height:22px}
+.cart-count{position:absolute;top:-4px;right:-7px;background:var(--gold);color:var(--color-surface);font-size:10px;font-family:var(--sans);width:17px;height:17px;border-radius:50%;display:none;align-items:center;justify-content:center;line-height:1}
+.burger{display:none;background:none;border:none;color:inherit;cursor:pointer;flex-direction:column;gap:5px;padding:6px}
+.burger span{display:block;width:24px;height:1.5px;background:currentColor;transition:.3s}
+#mnav{position:fixed;inset:0;z-index:250;background:var(--espresso);color:var(--ivory);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;opacity:0;visibility:hidden;transition:.4s ease}
+#mnav.open{opacity:1;visibility:visible}
+#mnav a{font-family:var(--serif);font-size:32px;padding:8px 0}
+#mnav a:hover{color:var(--gold-light)}
+#mnav .x{position:absolute;top:24px;right:28px;font-size:34px;background:none;border:none;color:var(--ivory);cursor:pointer;font-family:var(--serif)}
+.btn{display:inline-block;font-family:var(--sans);font-size:12px;letter-spacing:.18em;text-transform:uppercase;padding:14px 30px;border:1px solid var(--espresso);color:var(--espresso);background:transparent;cursor:pointer;transition:all .45s cubic-bezier(.7,0,.2,1);position:relative;overflow:hidden;text-align:center}
+.btn span{position:relative;z-index:1;transition:color .45s ease}
+.btn::before{content:"";position:absolute;inset:0;background:var(--espresso);transform:translateY(101%);transition:transform .45s cubic-bezier(.7,0,.2,1)}
+.btn:hover::before{transform:translateY(0)}
+.btn:hover span{color:var(--ivory)}
+.btn.gold{border-color:var(--gold);color:inherit}
+.btn.gold::before{background:var(--gold)}
+.btn.gold:hover span{color:#FFF6F2}
+.btn.light{border-color:var(--ivory);color:var(--ivory)}
+.btn.light::before{background:var(--ivory)}
+.btn.light:hover span{color:var(--espresso)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn:disabled::before{display:none}
+/* ---------- Page hero band (sub pages) ---------- */
+.page-hero{position:relative;padding:calc(var(--nav-h) + 70px) 0 70px;background:var(--espresso);color:var(--ivory);overflow:hidden}
+.page-hero.cream{background:var(--cream);color:var(--espresso)}
+.page-hero .eyebrow{color:var(--gold-light)}
+.page-hero.cream .eyebrow{color:var(--gold-deep)}
+.page-hero:not(.cream) .eyebrow::before{background:var(--gold-light)}
+#hero .btn.gold,header:not(.solid) .btn.gold{border-color:var(--gold-light)}
+#hero .btn.gold::before,header:not(.solid) .btn.gold::before{background:var(--gold-light)}
+#hero .btn.gold:hover span,header:not(.solid) .btn.gold:hover span{color:var(--espresso)}
+.page-hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,6.5vw,80px);line-height:1.02;letter-spacing:-.01em;margin:18px 0 18px}
+.page-hero h1 em{font-style:italic;color:var(--gold-light)}
+.page-hero.cream h1 em{color:var(--gold-deep)}
+.page-hero p{max-width:560px;font-size:17px;opacity:.85}
+.page-hero.ges-hero{padding:calc(var(--nav-h) + 20px) clamp(12px,2.2vw,30px) 22px;background:var(--ivory)}
+/* ---------- Hero video ---------- */
+#hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:var(--espresso);color:var(--ivory)}
+#hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#hero .shade{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(79,47,40,.52),rgba(79,47,40,.22) 45%,rgba(79,47,40,.68))}
+.hero-inner{position:relative;z-index:2;max-width:920px;padding:0 24px}
+.hero-inner .eyebrow{color:var(--gold-light);opacity:0;animation:fadeUp .9s ease .2s forwards}
+.hero-inner .eyebrow::before{display:none}
+.hero-title{font-family:var(--serif);font-weight:500;line-height:1;font-size:clamp(44px,7.4vw,104px);letter-spacing:-.01em;margin:22px 0}
+.hero-title .l{display:block;overflow:hidden}
+.hero-title .l span{display:block;transform:translateY(105%);animation:lineUp 1.1s cubic-bezier(.16,1,.3,1) forwards;white-space:nowrap}
+.hero-title .l:nth-child(1) span{animation-delay:.45s}
+.hero-title .l:nth-child(2) span{animation-delay:.6s;font-style:italic;font-weight:400;color:var(--gold-light)}
+.hero-lede{max-width:560px;margin:0 auto;font-size:17px;color:rgba(247,225,218,.88);opacity:0;animation:fadeUp 1s ease .95s forwards}
+.hero-cta{display:flex;gap:16px;margin-top:38px;opacity:0;animation:fadeUp 1s ease 1.15s forwards;flex-wrap:wrap;justify-content:center}
+.hero-seal{position:absolute;bottom:56px;left:56px;width:116px;height:116px;border-radius:50%;background:rgba(79,47,40,.82);color:var(--gold-light);display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--serif);font-style:italic;font-size:15px;z-index:3;opacity:0;animation:pop .7s cubic-bezier(.3,1.4,.5,1) 1.5s forwards;animation-fill-mode:both}
+.hero-seal .ring{position:absolute;inset:6px;border:1px solid rgba(247,225,218,.5);border-radius:50%;animation:spin 24s linear infinite}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{to{opacity:1}}
+@keyframes lineUp{to{transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:3;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-light);display:flex;flex-direction:column;align-items:center;gap:12px;opacity:0;animation:fadeIn 1s ease 1.8s forwards}
+.scroll-cue .li{width:1px;height:46px;background:rgba(247,225,218,.35);position:relative;overflow:hidden}
+.scroll-cue .li::after{content:"";position:absolute;top:-46px;left:0;width:1px;height:46px;background:var(--ivory);animation:drop 2s cubic-bezier(.7,0,.2,1) infinite}
+@keyframes drop{0%{top:-46px}60%,100%{top:46px}}
+/* ---------- Marquee ---------- */
+.marquee{background:var(--cream);color:var(--espresso);padding:24px 0;overflow:hidden;white-space:nowrap;border-block:1px solid var(--line)}
+.marquee .track{display:inline-block;animation:scrollX 32s linear infinite}
+.marquee span{font-family:var(--serif);font-style:italic;font-size:25px;padding:0 34px;color:var(--espresso)}
+.marquee span::before{content:"✦";color:var(--gold-light);font-style:normal;font-size:14px;margin-right:56px;vertical-align:middle}
+@keyframes scrollX{to{transform:translateX(-50%)}}
+@keyframes scrollXrtl{to{transform:translateX(50%)}}
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
+/* ---------- Modern polish ---------- */
+h1,h2,#intro h1{text-wrap:balance}
+p,.te p,.sub,.lede{text-wrap:pretty}
+::selection{background:var(--gold);color:var(--color-surface)}
+:focus-visible{outline:2px solid var(--gold-deep);outline-offset:3px;border-radius:2px}
+input,button,textarea,select{accent-color:var(--gold-deep)}
+[data-page]{scroll-margin-top:96px}
+img,.slot{-webkit-user-drag:none}
+@media (hover:hover){.gift,.ing-card{will-change:transform}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1!important;transform:none!important}}
+/* ---------- Heritage ---------- */
+#heritage{background:var(--cream)}
+.her-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.her-img{position:relative;height:600px}
+.her-img .slot{position:absolute;top:0;left:0;width:74%;height:80%;z-index:2}
+.her-img .slot2{position:absolute;bottom:0;right:0;width:52%;height:56%;z-index:3;border:6px solid var(--cream)}
+.her-img .year{position:absolute;top:-24px;right:6%;font-family:var(--serif);font-size:120px;color:var(--gold);opacity:.22;z-index:1;font-style:italic}
+.her-copy h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4vw,48px);line-height:1.08;margin:16px 0 24px}
+.her-copy h2 em{font-style:italic;color:var(--gold-deep)}
+.her-copy p{color:var(--espresso-soft);margin-bottom:20px;font-size:16.5px}
+.her-copy .sig{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--gold-deep);margin-top:30px}
+/* ---------- Ingredients ---------- */
+.ing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.ing-card{background:var(--color-surface);border:1px solid var(--line);overflow:hidden;transition:transform .55s cubic-bezier(.16,1,.3,1),box-shadow .55s ease}
+.ing-card:hover{transform:translateY(-10px);box-shadow:0 26px 50px -20px rgba(79,47,40,.28)}
+.ing-card .ph{height:240px;overflow:hidden}
+.ing-card .ph .slot{width:100%;height:100%;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.ing-card:hover .ph .slot{transform:scale(1.06)}
+.ing-card .body{padding:30px 30px 34px}
+.ing-card .num{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:16px}
+.ing-card h3{font-family:var(--serif);font-weight:500;font-size:27px;margin:8px 0 12px}
+.ing-card p{color:var(--espresso-soft);font-size:15px}
+/* ---------- Produkte ---------- */
+.prod-cats{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:0 auto 60px}
+.prod-cats button{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--espresso-soft);border:1px solid var(--line);background:transparent;padding:11px 24px;border-radius:999px;cursor:pointer;transition:all .35s ease}
+.prod-cats button:hover{border-color:var(--gold);color:var(--gold-deep)}
+.col-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:54px 44px;max-width:1120px;margin:0 auto}
+.prod-group{margin-bottom:92px;scroll-margin-top:96px}.prod-group:last-child{margin-bottom:0}
+.prod-group .sec-head{margin:0 auto 48px;text-align:center;max-width:560px}
+.gift{position:relative;border:0;background:transparent;display:flex;flex-direction:column;text-align:center}
+.gift .tag{position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:4;font-family:var(--sans);font-size:10px;letter-spacing:.22em;text-transform:uppercase;padding:6px 15px;color:var(--gold-deep);background:rgba(247,225,218,.86);backdrop-filter:blur(4px)}
+.gift .ph{position:relative;overflow:hidden;background:var(--color-surface);aspect-ratio:1/1}
+.gift .ph .slot{position:absolute;inset:0;transition:transform 1s cubic-bezier(.16,1,.3,1)}
+.gift:hover .ph .slot{transform:scale(1.05)}
+.gift .body{display:flex;flex-direction:column;align-items:center;gap:4px;padding:22px 8px 0;flex:1}
+.gift h3{font-family:var(--serif);font-weight:500;font-size:25px;line-height:1.12}
+.gift .desc{color:var(--espresso-soft);font-size:13.5px}
+.gift .price{font-family:var(--serif);font-size:20px;color:var(--gold-deep);margin-top:10px}
+.gift .add{margin:18px auto 0;padding:12px 30px;align-self:center}
+.shop-assure{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:70px;border-top:1px solid var(--line);padding-top:48px}
+.shop-assure div h4{font-family:var(--serif);font-size:22px;font-weight:500;margin-bottom:6px}
+.shop-assure div p{color:var(--espresso-soft);font-size:14px;max-width:300px}
+/* ---------- Geschichte ---------- */
+.ges-banner{position:relative;height:44vh;min-height:340px;max-height:460px;overflow:hidden;display:flex;align-items:flex-end}
+.ges-banner{background:var(--espresso)}
+.ges-banner .slot{position:absolute;inset:0}
+.ges-banner .slot image-slot{width:100%;height:100%}
+.ges-banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(79,47,40,.12),rgba(79,47,40,.35) 45%,rgba(79,47,40,.9))}
+.ges-banner .cap{position:relative;z-index:2;color:var(--ivory);padding-bottom:64px}
+.ges-banner .q{font-family:var(--serif);font-style:italic;font-size:clamp(27px,3.6vw,48px);line-height:1.18;color:var(--white-choc);max-width:800px}
+.ges-banner .q b{font-style:normal;color:var(--gold-light);font-weight:500}
+.ges-banner small{display:block;margin-top:16px;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-light)}
+.ges-tale .tale-head{text-align:center;max-width:780px;margin:0 auto}
+.tale-title{font-family:var(--serif);font-weight:500;font-size:clamp(32px,4.7vw,60px);line-height:1.07;margin-top:14px;text-wrap:balance}
+.tale-title em{font-style:italic;color:var(--gold-deep)}
+.tale-orn{display:flex;align-items:center;justify-content:center;gap:16px;margin:28px auto 0;color:var(--gold)}
+.tale-orn::before,.tale-orn::after{content:"";height:1px;width:clamp(48px,10vw,96px)}
+.tale-orn::before{background:linear-gradient(90deg,transparent,var(--gold))}
+.tale-orn::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.tale-orn span{font-size:12px}
+.tale-grid{display:grid;grid-template-columns:1fr;gap:clamp(34px,5vw,58px);justify-items:center;margin:clamp(44px,5.5vw,68px) auto 0;max-width:840px}
+.tale-fig{position:relative;overflow:hidden;aspect-ratio:4/5;width:min(100%,520px);background:var(--color-surface)}
+.tale-fig .slot,.tale-fig image-slot{position:absolute;inset:0;width:100%;height:100%}
+.tale-fig .slot{transition:transform 1.1s cubic-bezier(.16,1,.3,1)}
+.ges-tale .tale-fig:hover .slot{transform:scale(1.04)}
+.tale-fig .frame{position:absolute;inset:15px;border:1px solid rgba(247,225,218,.55);z-index:2;pointer-events:none}
+.tale-copy{max-width:720px}
+.tale-copy p{color:var(--espresso-soft);font-size:17px;line-height:1.78;margin-top:20px;text-wrap:pretty}
+.tale-copy p:first-child{margin-top:0}
+.tale-copy .drop::first-letter{float:left;font-family:var(--serif);font-size:66px;line-height:.8;padding:8px 14px 0 0;color:var(--gold-deep)}
+.ges-frame{position:relative;margin:clamp(16px,2.5vw,32px) clamp(12px,2.2vw,30px)}
+.ges-frame>section{background:transparent!important}
+.ges-frame .wrap{padding-left:clamp(24px,4vw,56px);padding-right:clamp(24px,4vw,56px)}
+.ges-hero-frame{padding:clamp(42px,7%,100px) clamp(56px,11%,170px);max-width:1080px;margin:0 auto}
+@media(max-width:760px){.tale-grid{grid-template-columns:1fr;gap:32px}}
+.ges-intro{display:grid;grid-template-columns:.92fr 1.08fr;gap:60px;align-items:center}
+.ges-intro h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,3.6vw,46px);line-height:1.08;margin-top:12px}
+.ges-intro h2 em{font-style:italic;color:var(--gold-deep)}
+.ges-intro>div:first-child p{color:var(--espresso-soft);font-size:16px;margin-top:18px}
+.ges-strands{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.strand{border-top:2px solid var(--gold);padding-top:16px}
+.strand h5{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:9px;font-weight:600}
+.strand p{font-size:14px;color:var(--espresso-soft);line-height:1.6}
+.tline{position:relative;max-width:960px;margin:0 auto}
+.tline::before{content:"";position:absolute;top:6px;bottom:6px;left:50%;width:1px;background:linear-gradient(180deg,transparent,var(--gold) 7%,var(--gold) 93%,transparent);transform:translateX(-.5px)}
+.te{position:relative;width:50%;padding:22px 50px 22px 0;box-sizing:border-box;text-align:right}
+.te:nth-child(even){margin-left:50%;padding:22px 0 22px 50px;text-align:left}
+.te .yr{font-family:var(--serif);font-style:italic;font-size:clamp(30px,3.2vw,44px);color:var(--gold-deep);line-height:1}
+.te h4{font-family:var(--serif);font-size:22px;font-weight:500;margin:8px 0 6px}
+.te p{color:var(--espresso-soft);font-size:14.5px;line-height:1.62}
+.te::after{content:"";position:absolute;top:34px;width:13px;height:13px;border-radius:50%;background:var(--ivory);border:2px solid var(--gold-deep);box-shadow:0 0 0 5px var(--ivory)}
+.te:nth-child(odd)::after{right:-6.5px}
+.te:nth-child(even)::after{left:-6.5px}
+.ges-figs-head{text-align:center;max-width:600px;margin:0 auto clamp(40px,5vw,58px)}
+.ges-figs-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.4vw,44px);line-height:1.08;margin-top:12px;text-wrap:balance}
+.ges-figs-head h2 em{font-style:italic;color:var(--gold-deep)}
+.ges-figrow{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,4.5vw,64px);max-width:1000px;margin:0 auto}
+.ges-fig{margin:0}
+.ges-fig .imgwrap{position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--color-surface)}
+.ges-fig .slot,.ges-fig image-slot{position:absolute;inset:0;width:100%;height:100%}
+.ges-fig .slot{transition:transform 1.1s cubic-bezier(.16,1,.3,1)}
+.ges-fig:hover .slot{transform:scale(1.04)}
+.ges-fig .frame{position:absolute;inset:15px;border:1px solid rgba(247,225,218,.55);z-index:2;pointer-events:none}
+.ges-fig figcaption{text-align:center;position:relative;margin-top:26px;padding-top:24px}
+.ges-fig figcaption::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:40px;height:1px;background:var(--gold)}
+.ges-fig figcaption .yr{font-family:var(--sans);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep)}
+.ges-fig figcaption em{display:block;margin-top:8px;font-family:var(--serif);font-style:italic;font-size:clamp(19px,2.1vw,24px);color:var(--espresso)}
+.ges-close{text-align:center;max-width:660px;margin:0 auto}
+.ges-close .q{font-family:var(--serif);font-style:italic;font-size:clamp(24px,3vw,34px);line-height:1.35;color:var(--white-choc)}
+.ges-close small{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-light);margin-top:18px}
+@media(max-width:760px){.ges-intro{grid-template-columns:1fr;gap:34px}.ges-strands{grid-template-columns:1fr}.tline::before{left:7px}.te,.te:nth-child(even){width:100%;margin-left:0;padding:18px 0 18px 34px;text-align:left}.te:nth-child(odd)::after,.te:nth-child(even)::after{left:1px;right:auto}.ges-figrow{grid-template-columns:1fr}}
+/* ---------- Karriere ---------- */
+.kar-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;align-items:stretch}
+.kar-people{display:flex;flex-direction:column;gap:28px;min-height:0}
+.kar-card{background:var(--color-surface);border:1px solid var(--line);padding:0 0 30px;text-align:center;display:flex;flex-direction:column;flex:1;min-height:0}
+.kar-photo{flex:1;min-height:0;margin-bottom:26px}
+.kar-photo .slot{width:100%;height:100%}
+.kar-card h3{font-family:var(--serif);font-weight:500;font-size:27px;padding:0 24px}
+.kar-role{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);margin-top:6px;padding:0 24px}
+.kar-web{display:inline-block;margin-top:14px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);border-bottom:1px solid var(--gold);padding-bottom:2px}
+.kar-copy h2{font-family:var(--serif);font-weight:500;font-size:clamp(28px,4vw,44px);line-height:1.08;margin:16px 0 24px}
+.kar-copy h2 em{font-style:italic;color:var(--gold-deep)}
+.kar-copy p{color:var(--espresso-soft);margin-bottom:18px;font-size:16.5px;max-width:560px}
+/* ---------- Invite ---------- */
+#invite{background:var(--gold);color:var(--espresso);text-align:center}
+#invite h2{font-family:var(--serif);font-weight:500;font-size:clamp(36px,6vw,78px);line-height:1;margin-bottom:24px;letter-spacing:-.01em}
+#invite h2 em{font-style:italic}
+#invite p{max-width:520px;margin:0 auto 40px;color:var(--espresso-soft);font-size:17px}
+.invite-form{display:flex;max-width:480px;margin:0 auto;border:1px solid var(--espresso)}
+.invite-form input{flex:1;border:0;background:transparent;padding:16px 20px;font-family:var(--sans);font-size:14px;color:var(--espresso);outline:none;min-width:0}
+.invite-form input::placeholder{color:var(--espresso-soft)}
+.invite-form button{border:0;background:var(--espresso);color:var(--ivory);font-family:var(--sans);font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:0 28px;cursor:pointer;transition:background .4s ease;white-space:nowrap}
+.invite-form button:hover{background:var(--color-primary-hover)}
+#invite{background:var(--paper);color:var(--espresso)}
+#invite h2,#invite p{color:var(--espresso)}
+/* ---------- Footer ---------- */
+footer{background:var(--cream);color:var(--espresso);padding:88px 0 40px;--color-text-inverse:var(--espresso);--color-text-inverse-muted:var(--espresso-soft);--color-border-inverse:rgba(79,47,40,.2)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:56px;border-bottom:1px solid rgba(79,47,40,.18)}
+footer .brand{color:var(--espresso);margin-bottom:18px}
+footer .logo{color:var(--gold-deep)}
+.foot-grid p{color:var(--color-text-inverse-muted);font-size:14px;max-width:280px}
+.foot-col h5{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:18px}
+.foot-col a{display:block;color:var(--espresso-soft);font-size:14px;padding:6px 0;transition:color .3s ease;background:none;border:none;font-family:var(--sans);cursor:pointer;text-align:left;letter-spacing:normal;text-transform:none}
+.foot-col a:hover{color:var(--gold-deep)}
+.foot-bot{display:flex;justify-content:space-between;padding-top:26px;color:var(--color-text-inverse-muted);font-size:12px;letter-spacing:.06em;flex-wrap:wrap;gap:10px}
+/* ---------- Cart drawer ---------- */
+#overlay{position:fixed;inset:0;background:rgba(79,47,40,.55);z-index:290;opacity:0;visibility:hidden;transition:.4s ease}
+#overlay.show{opacity:1;visibility:visible}
+#drawer{position:fixed;top:0;right:0;bottom:0;width:min(460px,100vw);background:var(--ivory);z-index:300;transform:translateX(100%);transition:transform .5s cubic-bezier(.7,0,.2,1);display:flex;flex-direction:column;box-shadow:-24px 0 60px rgba(79,47,40,.25)}
+#drawer.open{transform:none}
+.dr-head{display:flex;justify-content:space-between;align-items:center;padding:24px 30px;border-bottom:1px solid var(--line)}
+.dr-head h3{font-weight:500;font-size:28px}
+.dr-close{background:none;border:none;font-size:30px;line-height:1;cursor:pointer;color:var(--espresso);font-family:var(--serif);padding:2px 6px}
+.dr-close:hover{color:var(--gold-deep)}
+.dr-items{flex:1;overflow-y:auto;padding:10px 30px}
+.dr-empty{text-align:center;padding:70px 0}
+.dr-item{display:grid;grid-template-columns:76px 1fr auto;gap:16px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.dr-item img{width:76px;height:76px;object-fit:cover}
+.dr-name{font-size:19px;font-weight:500;line-height:1.2}
+.dr-unit{font-size:13px;color:var(--espresso-soft);margin:2px 0 8px}
+.dr-qty{display:flex;align-items:center;gap:10px}
+.dr-qty button{width:28px;height:28px;border:1px solid var(--line);background:var(--color-surface);cursor:pointer;font-size:15px;line-height:1;color:var(--espresso)}
+.dr-qty button:hover{border-color:var(--gold)}
+.dr-qty span{min-width:18px;text-align:center;font-size:14px}
+.dr-qty .dr-rm{border:none;background:none;color:var(--espresso-soft);font-size:18px;margin-left:6px}
+.dr-line{font-size:19px;color:var(--gold-deep);align-self:start;margin-top:2px}
+.dr-foot{border-top:1px solid var(--line);padding:22px 30px 28px;background:var(--cream)}
+.dr-row{display:flex;justify-content:space-between;font-size:14px;color:var(--espresso-soft);padding:3px 0}
+.dr-row.total{font-family:var(--serif);font-size:22px;color:var(--espresso);padding:10px 0 16px}
+.dr-foot .btn{width:100%}
+.dr-note{font-size:12px;color:var(--espresso-soft);text-align:center;margin-top:12px}
+/* ---------- Checkout ---------- */
+#checkout{position:fixed;inset:0;z-index:310;display:none;align-items:center;justify-content:center;padding:20px}
+#checkout.open{display:flex}
+.chk-card{position:relative;background:var(--ivory);max-width:580px;width:100%;max-height:92vh;overflow-y:auto;padding:44px 48px}
+.chk-x{position:absolute;top:16px;right:20px}
+.chk-steps{display:flex;gap:22px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-text-muted);margin-bottom:28px;font-weight:400;flex-wrap:wrap}
+.chk-steps b{font-weight:400}
+.chk-steps b.on{color:var(--gold-deep)}
+.chk-step{display:none}
+.chk-step.on{display:block}
+.chk-step h3{font-family:var(--serif);font-weight:500;font-size:30px;margin-bottom:22px}
+.fld{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.fld label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--espresso-soft)}
+.fld input{border:1px solid var(--line);background:var(--color-surface);padding:12px 14px;font-family:var(--sans);font-size:15px;outline:none;color:var(--espresso);transition:border-color .3s;width:100%}
+.fld input:focus{border-color:var(--gold)}
+.fld-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.paytabs{display:flex;gap:10px;margin-bottom:22px}
+.paytab{flex:1;border:1px solid var(--line);background:var(--color-surface);padding:14px 12px;cursor:pointer;font-family:var(--sans);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--espresso-soft);transition:all .3s;text-align:center}
+.paytab.on{border-color:var(--gold);color:var(--espresso);background:var(--cream)}
+.paymethod{display:none}
+.paymethod.on{display:block}
+.paybadges{display:flex;gap:8px;margin:0 0 20px;flex-wrap:wrap}
+.paybadges span{border:1px solid var(--line);background:var(--color-surface);padding:4px 12px;font-size:11px;letter-spacing:.1em;color:var(--espresso-soft)}
+.bank-box{border:1px solid var(--line);background:var(--color-surface);padding:22px 24px;margin-bottom:18px}
+.bank-row{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+.bank-row:last-child{border-bottom:none}
+.bank-row span:first-child{color:var(--espresso-soft);letter-spacing:.06em}
+.bank-row span:last-child{font-family:var(--serif);font-size:17px;color:var(--espresso);text-align:right}
+.chk-secure{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--espresso-soft);margin-top:14px;justify-content:center;text-align:center}
+.chk-success{text-align:center;padding:20px 0}
+.chk-success .ok{width:74px;height:74px;border-radius:50%;border:1px solid var(--gold);color:var(--gold-deep);font-size:32px;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-family:var(--serif)}
+.chk-success h3{margin-bottom:8px}
+.chk-success p{color:var(--espresso-soft);font-size:15px;max-width:400px;margin:0 auto 8px}
+.chk-success .ord{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--gold-deep);margin:14px 0 26px}
+.chk-err::before{content:"\2715";margin-right:9px;font-weight:700}
+.chk-err{background:var(--espresso);border:1px solid var(--espresso);color:var(--ivory);font-weight:600;letter-spacing:.04em;font-size:13px;padding:12px 14px;margin-bottom:16px;display:none}
+/* ---------- Konto-Dialog ---------- */
+#authModal{position:fixed;inset:0;z-index:310;display:none;align-items:center;justify-content:center;padding:20px}
+#authModal.open{display:flex}
+.auth-card{max-width:430px;padding:38px 42px}
+.auth-tabs{display:flex;border:1px solid var(--line);margin-bottom:26px}
+.auth-tabs button{flex:1;background:none;border:0;padding:13px;font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--espresso-soft);cursor:pointer;transition:.25s;min-height:44px}
+.auth-tabs button.on{background:var(--espresso);color:var(--ivory)}
+.auth-mark{display:flex;justify-content:center;margin-bottom:16px}
+.auth-mark img{height:44px;width:auto;display:block}
+.auth-card .eyebrow{text-align:center}
+.auth-h{font-family:var(--serif);font-weight:500;font-size:32px;line-height:1.1;margin:8px 0 6px;text-align:center}
+.auth-sub{font-size:14px;color:var(--espresso-soft);margin-bottom:24px;text-align:center}
+.auth-goog{width:100%;display:flex;align-items:center;justify-content:center;gap:12px;padding:13px;border:1px solid var(--line);background:var(--color-surface);font-family:var(--sans);font-size:14px;font-weight:600;color:var(--espresso);cursor:pointer;transition:.25s;min-height:44px}
+.auth-goog:hover{border-color:var(--gold);box-shadow:0 4px 18px rgba(79,47,40,.08)}
+.auth-goog svg{width:19px;height:19px;flex:none}
+.auth-or{display:flex;align-items:center;gap:14px;margin:20px 0;color:var(--espresso-soft);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.auth-or::before,.auth-or::after{content:"";flex:1;height:1px;background:var(--line)}
+.auth-msg{font-size:13px;margin-top:14px;text-align:center;min-height:18px}
+.auth-msg.err{background:var(--espresso);color:var(--ivory);font-weight:600;padding:9px 12px}
+.auth-msg.ok{color:var(--gold-deep)}
+.auth-foot{font-size:13px;color:var(--espresso-soft);text-align:center;margin-top:18px}
+.auth-foot button{background:none;border:0;padding:0;font:inherit;color:var(--gold-deep);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.auth-avatar{width:74px;height:74px;border-radius:50%;background:var(--gold);color:var(--color-surface);font-family:var(--serif);font-size:32px;display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.auth-out{width:100%;border:1px solid var(--espresso);background:transparent;color:var(--espresso);font-family:var(--sans);font-size:12px;letter-spacing:.18em;text-transform:uppercase;padding:14px;cursor:pointer;transition:.25s;min-height:44px}
+.auth-out:hover{background:var(--espresso);color:var(--ivory)}
+.acc-btn{position:relative}
+.acc-dot{position:absolute;top:7px;right:7px;width:7px;height:7px;border-radius:50%;background:var(--gold-light)}
+#authModal .m-reg,#authModal.reg .m-login{display:none}
+#authModal.reg .m-reg{display:block}
+#authModal.reg span.m-reg,#authModal span.m-login{display:inline}
+#authModal.reg span.m-login{display:none}
+@media(max-width:560px){.auth-card{padding:30px 22px}}
+/* ---------- Mobile ---------- */
+@media(max-width:1020px){nav ul{gap:20px}nav a{font-size:11px}}
+@media(max-width:900px){
+  :root{--nav-h:56px}
+  .wrap{padding:0 22px}
+  nav{display:none}
+  .burger{display:flex}
+  header .btn{display:none}
+  .her-grid,.ges-grid,.kar-grid{grid-template-columns:1fr;gap:44px}
+  .ing-grid,.col-grid,.shop-assure{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .pad{padding:80px 0}
+  .her-img,
+  .hero-seal{left:22px;bottom:86px;width:92px;height:92px;font-size:13px}
+  .ges-side,.kar-card{position:static;flex:none}
+  .ges-side .slot{height:320px}
+  .kar-people{min-height:auto}
+  .kar-photo{flex:none;height:340px}
+  .chk-card{padding:34px 22px}
+  .page-hero{padding:calc(var(--nav-h) + 48px) 0 48px}
+}
+@media(max-width:560px){
+  .wrap{padding:0 18px}
+  .pad{padding:64px 0}
+  .sec-head{margin-bottom:40px}
+  .her-img{height:360px}
+  .her-img .year{font-size:80px}
+  .hero-cta{gap:12px}
+  .hero-title{font-size:clamp(24px,8.2vw,40px)}
+  .hero-cta .btn{flex:1;min-width:150px}
+  .foot-grid{grid-template-columns:1fr;gap:32px}
+  .foot-bot{flex-direction:column;text-align:center}
+  .tl-item{grid-template-columns:70px 1fr;gap:14px;padding:20px 0}
+  .tl-item .yr{font-size:22px}
+  .gift .ph{height:260px}
+  .fld-row{grid-template-columns:1fr}
+  .dr-head,.dr-items,.dr-foot{padding-left:20px;padding-right:20px}
+  .btn{padding:13px 24px}
+  .hero-seal{display:none}
+  .paytabs{flex-direction:column}
+}
+@media(max-height:560px) and (min-width:901px){#hero{height:auto;min-height:0;padding:160px 0 90px}}
+</style>
+<style>
+/* ---------- Hero: Glyphen nicht abschneiden ---------- */
+.hero-inner{max-width:1080px;padding-left:clamp(24px,5vw,56px);padding-right:clamp(24px,5vw,56px)}
+.hero-title{font-size:clamp(40px,6.6vw,92px)}
+.hero-title .l{display:block;padding-inline:.08em}
+.hero-title .l>span{display:inline-block;padding-right:.06em}
+/* ---------- Geschichte: Dynastie-Porträt ---------- */
+.ges-portrait{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(34px,5vw,72px);align-items:center;color:var(--color-text-inverse)}
+.gp-fig{position:relative;margin:0;aspect-ratio:4/5;overflow:hidden}
+.gp-fig img{width:100%;height:100%;object-fit:contain;object-position:50% 50%;padding:26px}
+.gp-frame{position:absolute;inset:14px;border:1px solid rgba(231,205,190,.42);pointer-events:none}
+.gp-label{font-family:var(--sans);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-light)}
+.ges-portrait h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,3.8vw,50px);line-height:1.06;margin:16px 0 22px;text-wrap:balance}
+.ges-portrait h2 em{font-style:italic;color:var(--gold-light)}
+.ges-portrait p{color:var(--color-text-inverse-muted);font-size:16.5px;line-height:1.78;max-width:620px;text-wrap:pretty}
+.gp-rule{display:flex;align-items:center;gap:16px;margin:30px 0;color:var(--gold-light);font-size:11px}
+.gp-rule span{height:1px;flex:1;max-width:120px;background:linear-gradient(90deg,transparent,rgba(231,205,190,.7))}
+.gp-rule span:last-child{background:linear-gradient(90deg,rgba(231,205,190,.7),transparent)}
+.gp-quote{font-style:italic;font-size:clamp(21px,2.4vw,28px);line-height:1.45;color:var(--white-choc)}
+@media(max-width:860px){.ges-portrait{grid-template-columns:1fr;gap:32px}.gp-fig{max-width:440px;margin:0 auto}}
+/* ---------- RTL (Arabisch) ---------- */
+html[dir="rtl"] .eyebrow::before{margin-right:0;margin-left:14px}
+html[dir="rtl"] .marquee .track{animation-name:scrollXrtl}
+html[dir="rtl"] .marquee span::before{margin-right:0;margin-left:56px}
+html[dir="rtl"] .te{padding:22px 0 22px 50px;text-align:left}
+html[dir="rtl"] .te:nth-child(even){margin-left:0;margin-right:50%;padding:22px 50px 22px 0;text-align:right}
+html[dir="rtl"] .te:nth-child(odd)::after{right:auto;left:-6.5px}
+html[dir="rtl"] .te:nth-child(even)::after{left:auto;right:-6.5px}
+html[dir="rtl"] #drawer{right:auto;left:0;transform:translateX(-100%)}
+html[dir="rtl"] #drawer.open{transform:none}
+html[dir="rtl"] .dr-qty .dr-rm{margin-left:0;margin-right:6px}
+html[dir="rtl"] .foot-col a{text-align:right}
+html[dir="rtl"] .chk-err::before{margin-right:0;margin-left:9px}
+html[dir="rtl"] .chk-x{right:auto;left:20px}
+html[dir="rtl"] .her-img .slot{left:auto;right:0}
+html[dir="rtl"] .her-img .slot2{right:auto;left:0}
+html[dir="rtl"] .her-img .year{right:auto;left:6%}
+html[dir="rtl"] .hero-title .l>span{padding-right:0;padding-left:.06em}
+@media(max-width:760px){html[dir="rtl"] .tline::before{left:auto;right:7px}html[dir="rtl"] .te,html[dir="rtl"] .te:nth-child(even){margin-right:0;padding:18px 34px 18px 0;text-align:right}html[dir="rtl"] .te:nth-child(odd)::after,html[dir="rtl"] .te:nth-child(even)::after{left:auto;right:1px}}
+/* ---------- Sprachwahl ---------- */
+/* ---------- Geschichte: offener Auftakt ---------- */
+.ges-hero{text-align:center}
+.ges-hero .ges-hairline{margin-top:clamp(16px,2vw,24px)}
+.ges-hero .wrap{max-width:960px}
+.ges-hero .eyebrow::before{display:none}
+.ges-hairline{width:min(300px,60%);height:1px;margin:clamp(24px,3vw,40px) auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.ges-lead{max-width:860px;margin:0 auto clamp(46px,6vw,84px);text-align:center}
+.ges-lead-title{font-family:var(--serif);font-weight:500;font-size:clamp(34px,5vw,64px);line-height:1.06;margin:0;text-wrap:balance}
+.ges-lead-title em{font-style:italic;color:var(--gold-deep)}
+.ges-lead .orn{color:var(--gold);font-size:12px;margin:clamp(20px,2.6vw,30px) 0 clamp(18px,2.4vw,28px)}
+.ges-lead p{font-family:var(--serif);font-size:clamp(20px,2.4vw,29px);line-height:1.5;color:var(--espresso);text-wrap:pretty}
+.ges-lead::after{content:"";display:block;width:64px;height:1px;background:var(--gold);margin:clamp(24px,3vw,38px) auto 0}
+.strand p em,.ges-intro>div:first-child p em{font-style:italic;color:var(--gold-deep)}
+/* ---------- Team / Kontakt ---------- */
+.team-stack{display:grid;gap:clamp(46px,6vw,86px)}
+.kar-people{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,36px)}
+.kar-photo{aspect-ratio:4/5;flex:none;min-height:0}
+.kar-bio{font-size:15px;color:var(--espresso-soft);line-height:1.62;padding:0 26px;margin-top:14px;text-wrap:pretty}
+.kar-copy{max-width:840px;margin:0 auto;text-align:center}
+.kar-copy p{margin-left:auto;margin-right:auto;max-width:740px}
+@media(max-width:760px){.kar-people{grid-template-columns:1fr}}
+/* ---------- Footer ---------- */
+.foot-grid{grid-template-columns:1.6fr 1fr 1fr}
+.foot-bot{flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px}
+.foot-legal{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px}
+.foot-legal a{color:var(--espresso-soft);font-size:12px;letter-spacing:.08em;transition:color .3s ease}
+.foot-legal a:hover{color:var(--gold-deep)}
+@media(max-width:860px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.foot-grid{grid-template-columns:1fr}}
+</style>
+<style>
+.lang-row{display:flex;align-items:center;gap:13px}
+.lang-row button{font-family:var(--sans);font-size:11px;font-weight:400;letter-spacing:.18em;background:none;border:0;padding:8px 2px;color:inherit;opacity:.82;cursor:pointer;line-height:1;transition:opacity .3s ease}
+.lang-row button:hover{opacity:1}
+.lang-row button[aria-current="true"]{opacity:1;font-weight:500;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+.lang-row button:focus-visible{outline:2px solid currentColor;outline-offset:3px;opacity:1}
+#mnav .lang-row{margin-top:10px;gap:20px}
+#mnav .lang-row button{font-size:14px;letter-spacing:.14em;padding:14px 8px;min-height:44px}
+header:not(.solid) .lang-row button{opacity:.9}
+</style>
+</head>
+<body>
+
+<div id="intro">
+  <img class="logo" src="uploads/logo-crown.png" alt="Wappen" width="207" height="112">
+  <div class="crest" data-i="t162" data-en="Established · Vienna">Gegründet · Wien</div>
+  <h1 class="serif">Die Habsburger Torte</h1>
+  <div class="bar"></div>
+</div>
+
+<header id="header">
+  <div class="wrap bar">
+    <a href="#home" class="brand" data-nav><img class="logo" src="uploads/logo-crown.png" alt="Wappen" width="207" height="112">Habsburger Torte</a>
+    <nav>
+      <ul>
+        <li><a href="#produkte" data-nav data-i="t1" data-en="Shop">Shop</a></li>
+        <li><a href="#geschichte" data-nav data-i="t2" data-en="History">Geschichte</a></li>
+        <li><a href="#kontakt" data-nav data-i="t3" data-en="Contact">Kontakt</a></li>
+      </ul>
+    </nav>
+    <div class="nav-ctrl">
+      <div class="lang-row" role="group" aria-label="Sprache"><button type="button" data-lang="de">DE</button><button type="button" data-lang="en">EN</button><button type="button" data-lang="zh">中文</button><button type="button" data-lang="ru">RU</button><button type="button" data-lang="ar">AR</button></div>
+      <button type="button" id="accBtn" class="cart-btn acc-btn" aria-label="Konto" style="align-items:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-6.5 7-6.5s7 2.6 7 6.5"/></svg><span class="acc-dot" id="accDot" hidden></span></button>
+      <button class="cart-btn" type="button" aria-label="Warenkorb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h12l-1.2 12.2a1.5 1.5 0 0 1-1.5 1.3H8.7a1.5 1.5 0 0 1-1.5-1.3L6 8z"></path><path d="M9 10V6.5a3 3 0 0 1 6 0V10"></path></svg><span class="cart-count"></span></button>
+      <a href="#produkte" data-nav class="btn gold"><span data-i="t4" data-en="Order">Bestellen</span></a>
+      <button class="burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div id="mnav">
+  <button class="x" id="mnavX">×</button>
+  <a href="#produkte" data-nav data-i="t5" data-en="Shop">Shop</a>
+  <a href="#geschichte" data-nav data-i="t6" data-en="History">Geschichte</a>
+  <a href="#kontakt" data-nav data-i="t7" data-en="Contact">Kontakt</a>
+  <div class="lang-row" role="group" aria-label="Sprache"><button type="button" data-lang="de">DE</button><button type="button" data-lang="en">EN</button><button type="button" data-lang="zh">中文</button><button type="button" data-lang="ru">RU</button><button type="button" data-lang="ar">AR</button></div>
+</div>
+
+<!-- ============ HOME ============ -->
+<main data-page="home">
+<section id="hero">
+  <video autoplay muted loop playsinline preload="auto"><source src="uploads/watermark-removed-___-ezgif.com-mute-video.mp4" type="video/mp4"></video>
+  <div class="shade"></div>
+  <div class="hero-inner">
+    <div class="eyebrow" data-i="t8" data-en="Imperial white chocolate cake · Vienna">Kaiserliche Torte aus weißer Schokolade · Wien</div>
+    <h1 class="hero-title">
+      <span class="l"><span data-i="t9" data-en="The Habsburger Torte">Die Habsburger Torte</span></span>
+      <span class="l"><span data-i="t10" data-en="Taste of an era">Geschmack einer Epoche</span></span>
+    </h1>
+    <p class="hero-lede" data-i="t11" data-en="A shell of fine white chocolate, velvety light buttercream and a radiant filling of Tuscan oranges — a cake born in the tradition of the Viennese court.">Eine Hülle aus edler weißer Schokolade, samtige helle Buttercreme und eine strahlende Füllung aus toskanischen Orangen — eine Torte, geboren in der Tradition des Wiener Hofes.</p>
+    <div class="hero-cta">
+      <a href="#produkte" data-nav class="btn light"><span data-i="t12" data-en="Shop now">Jetzt bestellen</span></a>
+      <a href="#geschichte" data-nav class="btn gold" style="color:var(--ivory)"><span data-i="t13" data-en="Our history">Unsere Geschichte</span></a>
+    </div>
+  </div>
+  <div class="hero-seal serif"><div class="ring"></div><span data-i="t161" data-en="Vienna">Wien</span><br>1857</div>
+  <div class="scroll-cue"><span data-i="t14" data-en="Scroll">Scrollen</span><span class="li"></span></div>
+</section>
+
+<div class="marquee">
+  <div class="track">
+    <span data-i="t155" data-en="White chocolate">Weiße Schokolade</span><span data-i="t156" data-en="Light buttercream">Helle Buttercreme</span><span data-i="t157" data-en="Tuscan oranges">Toskanische Orangen</span><span data-i="t158" data-en="Viennese craft">Wiener Handwerk</span>
+    <span data-i="t155" data-en="White chocolate">Weiße Schokolade</span><span data-i="t156" data-en="Light buttercream">Helle Buttercreme</span><span data-i="t157" data-en="Tuscan oranges">Toskanische Orangen</span><span data-i="t158" data-en="Viennese craft">Wiener Handwerk</span>
+  </div>
+</div>
+
+<section id="heritage" class="pad">
+  <div class="wrap her-grid">
+    <div class="her-img">
+      <span class="year serif reveal">MDCCCLVII</span>
+      <div class="slot reveal"><image-slot id="her1" shape="rect" src="uploads/opt/torte-box-slice.jpg" placeholder="Historisches Foto / Auslage"></image-slot></div>
+      <div class="slot2 reveal d2"><image-slot id="her2" shape="rect" src="uploads/opt/torte-box-slice2.jpg" placeholder="Konditor bei der Arbeit"></image-slot></div>
+    </div>
+    <div class="her-copy">
+      <div class="eyebrow reveal" data-i="t15" data-en="Heritage">Erbe</div>
+      <h2 class="serif reveal d1" data-i="t16" data-en="A cake worthy of the <em>imperial</em> table">Eine Torte, würdig der <em>kaiserlichen</em> Tafel</h2>
+      <p class="reveal d2" data-i="t17" data-en="Legend has it the Habsburger Torte was created for the festivities of the Viennese court — a bright answer to the dark chocolate canon. Where other cakes spoke of luxury in rich, dark tones, this one spoke the language of light: white chocolate, the lightness of sponge and the lively acidity of citrus.">Der Legende nach wurde die Habsburger Torte für die Festlichkeiten des Wiener Hofes geschaffen — als helle Antwort auf den dunklen Schokoladenkanon. Wo andere Torten üppig und dunkel von Luxus sprachen, sprach diese die Sprache des Lichts: weiße Schokolade, die Leichtigkeit des Biskuits und die lebendige Säure der Zitrusfrucht.</p>
+      <p class="reveal d3" data-i="t18" data-en="We keep this recipe as it was meant to be: without haste, by hand, layer by layer. Every cake is a small ceremony continuing one and a half centuries of tradition.">Wir bewahren dieses Rezept so, wie es gedacht war: ohne Eile, von Hand, Schicht für Schicht. Jede Torte ist eine kleine Zeremonie, die anderthalb Jahrhunderte Tradition fortführt.</p>
+      <div class="sig serif reveal d3" data-i="t19" data-en="— Habsburger Torte, Vienna">— Habsburger Torte, Wien</div>
+    </div>
+  </div>
+</section>
+
+<section id="ingredients" class="pad" style="background:var(--ivory)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow" data-i="t20" data-en="Ingredients">Zutaten</div>
+      <h2 class="serif" data-i="t21" data-en="Three noble things, <em>one harmony</em>">Drei Edelheiten, <em>eine Harmonie</em></h2>
+      <p data-i="t22" data-en="No shortcuts, no substitutes. Only three noble ingredients, brought into perfect balance by hand.">Keine Abkürzungen, kein Ersatz. Nur drei edle Zutaten, von Hand in vollkommene Balance gebracht.</p>
+    </div>
+    <div class="ing-grid">
+      <article class="ing-card reveal">
+        <div class="ph"><div class="slot"><image-slot id="ing1" shape="rect" src="https://cdn.pixabay.com/photo/2014/06/30/20/05/white-chocolate-380702_1280.jpg" placeholder="Weiße Schokolade"></image-slot></div></div>
+        <div class="body"><div class="num serif">01</div><h3 class="serif" data-i="t23" data-en="White chocolate">Weiße Schokolade</h3><p data-i="t24" data-en="Fine cocoa butter with notes of vanilla and cream. We temper it by hand for perfect shine and snap.">Erlesene Kakaobutter mit Noten von Vanille und Sahne. Wir temperieren sie von Hand für perfekten Glanz und Knack.</p></div>
+      </article>
+      <article class="ing-card reveal d1">
+        <div class="ph"><div class="slot"><image-slot id="ing2" shape="rect" src="https://cdn.pixabay.com/photo/2017/01/20/15/06/oranges-1995056_1280.jpg" placeholder="Zitrusfrüchte"></image-slot></div></div>
+        <div class="body"><div class="num serif">02</div><h3 class="serif" data-i="t25" data-en="Tuscan oranges">Toskanische Orangen</h3><p data-i="t26" data-en="Tuscan oranges, lemons and bergamot. Zest and juice give the lively acidity at the heart of the cake.">Toskanische Orangen, Zitronen und Bergamotte. Schale und Saft geben die lebendige Säure im Herzen der Torte.</p></div>
+      </article>
+      <article class="ing-card reveal d2">
+        <div class="ph"><div class="slot"><image-slot id="ing3" shape="rect" src="uploads/opt/torte-slice-side.jpg" placeholder="Biskuit / Vanille"></image-slot></div></div>
+        <div class="body"><div class="num serif">03</div><h3 class="serif" data-i="t27" data-en="Light buttercream">Helle Buttercreme</h3><p data-i="t28" data-en="Madagascar vanilla and finest butter, whisked into a weightless, melting texture.">Madagaskar-Vanille und feinste Butter, aufgeschlagen zu einer schwerelosen, schmelzenden Textur.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="invite" class="pad">
+  <div class="wrap">
+    <h2 class="serif reveal" data-i="t29" data-en="The first <em>slice</em> is on us">Das erste <em>Stück</em> geht auf uns</h2>
+    <p class="reveal d1" data-i="t30" data-en="Subscribe and receive an invitation to a tasting of the Habsburger Torte and the story of the cake by e-mail.">Abonnieren Sie und erhalten Sie eine Einladung zur Verkostung der Habsburger Torte sowie die Geschichte der Torte per E-Mail.</p>
+    <form class="invite-form reveal d2" onsubmit="event.preventDefault();var f=this,b=f.querySelector('button'),o=b.textContent,e=f.email.value;b.disabled=true;b.textContent='…';fetch('https://formsubmit.co/ajax/novmir.kurbanov@gmail.com',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({email:e,_subject:'Neue Newsletter-Anmeldung — Habsburger Torte'})}).then(function(){b.textContent=(document.documentElement.lang==='de'?'✓ Danke':'✓ Thank you');f.email.value='';}).catch(function(){b.disabled=false;b.textContent=o;});return false;">
+      <input type="email" name="email" placeholder="Ihre E-Mail" data-en-ph="Your e-mail" data-ru-ph="Ваш e-mail" data-zh-ph="您的电子邮箱" data-ar-ph="بريدك الإلكتروني" aria-label="E-Mail" required>
+      <button type="submit" data-i="t31" data-en="Subscribe">Abonnieren</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- ============ PRODUKTE ============ -->
+<main data-page="produkte" hidden>
+<section class="page-hero cream">
+  <div class="wrap">
+    <div class="eyebrow" data-i="t32" data-en="Shop">Shop</div>
+    <h1 class="serif" data-i="t33" data-en="The <em>collection</em> of the house">Die <em>Kollektion</em> des Hauses</h1>
+    <p data-i="t34" data-en="The Habsburger Torte — as a whole cake, by the slice, or as delicate petits fours. Each piece handmade in Vienna and packed in the manufactory box of the house.">Die Habsburger Torte — als ganze Torte, als Stück oder als zarte Konfekt. Jedes Stück von Hand in Wien gefertigt und in der Manufakturschachtel des Hauses verpackt.</p>
+  </div>
+</section>
+<section class="pad" style="background:var(--ivory)">
+  <div class="wrap">
+    <nav class="prod-cats reveal"><button type="button" data-scroll="g-torten" data-i="t35" data-en="Cakes">Torten</button><button type="button" data-scroll="g-petits" data-i="t36" data-en="Petits fours">Konfekt</button></nav>
+    <div class="prod-group" id="g-torten">
+      <div class="sec-head reveal"><div class="eyebrow" data-i="t37" data-en="Classic cakes">Klassische Torten</div><h2 class="serif" data-i="t38" data-en="One torte, <em>three sizes</em>">Eine Torte, <em>drei Größen</em></h2></div>
+      <div class="col-grid">
+        <article class="gift reveal"><span class="tag" data-i="t39" data-en="Small">Klein</span>
+          <div class="ph"><div class="slot"><image-slot id="p6" shape="rect" src="uploads/opt/torte-slice-plate.jpg" placeholder="Habsburger Torte Klein"></image-slot></div></div>
+          <div class="body"><div><h3 class="serif">Habsburger Torte Klein</h3><div class="desc" data-i="t40" data-en="Single portion">Einzelportion</div></div><div class="price serif">€ 12</div></div>
+          <button class="btn gold add" data-add="solo" data-name="Habsburger Torte Klein" data-price="12" data-img="uploads/opt/torte-slice-plate.jpg"><span data-i="t41" data-en="Add to cart">In den Warenkorb</span></button>
+        </article>
+        <article class="gift reveal d1"><span class="tag" data-i="t42" data-en="Medium">Mittel</span>
+          <div class="ph"><div class="slot"><img src="uploads/opt/11 - Cardes.at-11.jpg" alt="Habsburger Torte Mittel in der Holzschatulle" style="width:100%;height:100%;object-fit:cover;"></div></div>
+          <div class="body"><div><h3 class="serif">Habsburger Torte Mittel</h3><div class="desc" data-i="t43" data-en="Small cake · serves 6">Kleine Torte · 6 Personen</div></div><div class="price serif">€ 42</div></div>
+          <button class="btn gold add" data-add="petite" data-name="Habsburger Torte Mittel" data-price="42" data-img="uploads/opt/11 - Cardes.at-11.jpg"><span data-i="t44" data-en="Add to cart">In den Warenkorb</span></button>
+        </article>
+        <article class="gift reveal d2"><span class="tag" data-i="t45" data-en="Large">Groß</span>
+          <div class="ph"><div class="slot"><img src="uploads/opt/12 - 3..Cardes.at-12.jpg" alt="Habsburger Torte Groß in der Holzschatulle" style="width:100%;height:100%;object-fit:cover;"></div></div>
+          <div class="body"><div><h3 class="serif">Habsburger Torte Groß</h3><div class="desc" data-i="t46" data-en="Whole cake · serves 12">Ganze Torte · 12 Personen</div></div><div class="price serif">€ 79</div></div>
+          <button class="btn gold add" data-add="grande" data-name="Habsburger Torte Groß" data-price="79" data-img="uploads/opt/12 - 3..Cardes.at-12.jpg"><span data-i="t47" data-en="Add to cart">In den Warenkorb</span></button>
+        </article>
+      </div>
+    </div>
+    <div class="prod-group" id="g-petits">
+      <div class="sec-head reveal"><div class="eyebrow" data-i="t48" data-en="Petits fours">Konfekt</div><h2 class="serif" data-i="t49" data-en="Little <em>works of art</em>">Kleine <em>Kunstwerke</em></h2></div>
+      <div class="col-grid" style="grid-template-columns:repeat(2,1fr);max-width:640px">
+        <article class="gift reveal"><span class="tag" data-i="t50" data-en="Wooden box">Schatulle</span>
+          <div class="ph"><div class="slot"><image-slot id="pf1" shape="rect" src="uploads/opt/petit-plaisir.jpg" placeholder="Konfekt"></image-slot></div></div>
+          <div class="body"><div><h3 class="serif">Konfekt</h3><div class="desc" data-i="t51" data-en="2 pieces · wooden keepsake box">2 Stück · Holzschatulle</div></div><div class="price serif">€ 14</div></div>
+          <button class="btn gold add" data-add="petitsfours" data-name="Konfekt · Schatulle" data-price="14" data-img="uploads/opt/petit-plaisir.jpg"><span data-i="t52" data-en="Add to cart">In den Warenkorb</span></button>
+        </article>
+        <article class="gift reveal d1"><span class="tag" data-i="t53" data-en="Gold tin">Goldene Dose</span>
+          <div class="ph"><div class="slot"><image-slot id="pf2" shape="rect" src="uploads/opt/pralinen-goldtin.jpg" placeholder="Konfekt"></image-slot></div></div>
+          <div class="body"><div><h3 class="serif">Konfekt</h3><div class="desc" data-i="t54" data-en="2 pieces · golden tin">2 Stück · Goldene Dose</div></div><div class="price serif">€ 18</div></div>
+          <button class="btn gold add" data-add="petitsfours-gold" data-name="Konfekt · Goldene Dose" data-price="18" data-img="uploads/opt/pralinen-goldtin.jpg"><span data-i="t55" data-en="Add to cart">In den Warenkorb</span></button>
+        </article>
+      </div>
+    </div>
+    <div class="shop-assure">
+      <div class="reveal"><h4 class="serif" data-i="t56" data-en="Fresh from Vienna">Frisch aus Wien</h4><p data-i="t57" data-en="Baked to order and shipped cooled within 2–4 days across Europe.">Auf Bestellung gebacken und gekühlt in 2–4 Tagen europaweit versandt.</p></div>
+      <div class="reveal d1"><h4 class="serif" data-i="t58" data-en="Secure payment">Sichere Zahlung</h4><p data-i="t59" data-en="Pay by card or SEPA bank transfer — your order confirmation arrives by e-mail.">Zahlung per Karte oder SEPA-Überweisung — Ihre Bestellbestätigung kommt per E-Mail.</p></div>
+      <div class="reveal d2"><h4 class="serif" data-i="t60" data-en="Free from € 60">Gratis ab € 60</h4><p data-i="t61" data-en="Free shipping on all orders over sixty euros, beautifully gift-wrapped.">Kostenloser Versand ab sechzig Euro, festlich verpackt.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ GESCHICHTE ============ -->
+<main data-page="geschichte" hidden>
+<section class="pad ges-tale" style="background:var(--ivory)">
+  <div class="wrap">
+    <div class="tale-head reveal">
+      <div class="eyebrow" data-i="t64" data-en="The cake">Die Torte</div>
+      <h2 class="tale-title" data-i="t65" data-en="An imperial <em>masterpiece</em> of the baker&rsquo;s art">Ein kaiserliches <em>Meisterwerk</em> der Backkunst</h2>
+      <div class="tale-orn"><span>&#10022;</span></div>
+    </div>
+    <div class="tale-grid">
+      <figure class="tale-fig reveal d1"><div class="slot"><image-slot id="gesTale" shape="rect" src="uploads/opt/torte-grande.jpg" placeholder="Die Habsburger Torte"></image-slot></div><div class="frame"></div></figure>
+      <div class="tale-copy reveal d2">
+        <p class="drop" data-i="t66" data-en="Step into the world of imperial and royal indulgence. The Habsburger Torte is the masterpiece of a passionate search for lost traces. After intensive research in the historical archives of our house, we carefully raised a long-forgotten recipe and brought it back to life.">Treten Sie ein in die Genusswelt der k. u. k. Monarchie. Die Habsburger Torte ist das Meisterwerk einer leidenschaftlichen Spurensuche. Nach intensiven Recherchen in den historischen Archiven unseres Hauses haben wir ein lang vergessenes Rezept behutsam gehoben und zu neuem Leben erweckt.</p>
+        <p data-i="t67" data-en="It weds the imperial elegance of the Viennese court with consummate craftsmanship into a delight of historical dimension. Savour a confection that turns any coffee table into an imperial audience.">Sie vermählt die imperiale Eleganz des Wiener Hofes mit vollendeter Handwerkskunst zu einem Gaumenschmaus von historischer Dimension. Genießen Sie ein Konfekt, das jede Kaffeetafel in eine kaiserliche Audienz verwandelt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pad-md" style="background:var(--espresso)">
+  <div class="wrap ges-portrait">
+    <figure class="gp-fig reveal">
+      <img src="uploads/opt/Gemini_Generated_Image_qm1r04qm1r04qm1r.jpg" alt="Wappen des Hauses Habsburg mit Doppeladler und Kaiserkrone" loading="lazy" decoding="async">
+      <div class="gp-frame" aria-hidden="true"></div>
+    </figure>
+    <div class="gp-copy reveal d1">
+      <div class="gp-label" data-i="t68" data-en="The dynasty">Die Dynastie</div>
+      <h2 class="serif" data-i="t69" data-en="Six centuries at <em>one table</em>">Sechs Jahrhunderte an <em>einem Tisch</em></h2>
+      <p data-i="t70" data-en="Habsburg rule was written not only in treaties, but in porcelain, silver and sugar. Court confectioners answered every coronation, every wedding, every audience with a creation of its own — and the recipes remained in the house.">Habsburgische Herrschaft wurde nicht nur in Verträgen geschrieben, sondern in Porzellan, Silber und Zucker. Die Hofzuckerbäcker antworteten auf jede Krönung, jede Hochzeit, jede Audienz mit einer eigenen Kreation — und die Rezepte blieben im Hause.</p>
+      <div class="gp-rule" aria-hidden="true"><span></span>&#10022;<span></span></div>
+      <p class="gp-quote serif" data-i="t71" data-en="&lsquo;What was served at court was never merely food. It was a statement.&rsquo;">„Was am Hofe serviert wurde, war niemals nur Speise. Es war eine Aussage."</p>
+    </div>
+  </div>
+</section>
+<section class="pad" style="background:var(--cream)">
+  <div class="wrap">
+    <div class="ges-lead reveal">
+      <h1 class="serif ges-lead-title" data-i="t63" data-en="From the House of <em>Habsburg</em> to your table">Vom Hause <em>Habsburg</em> auf Ihre Tafel</h1>
+      <div class="orn" role="presentation" aria-hidden="true">&#10022;</div>
+      <p data-i="t72" data-en="For over six centuries the House of Habsburg shaped Europe — from the Habichtsburg in Aargau to an empire &lsquo;on which the sun never set&rsquo;. From its coffee-house and confectionery culture and the imperial citrus collection of Schönbrunn, this cake was born.">Über sechs Jahrhunderte prägte das Haus Habsburg Europa — von der Habichtsburg im Aargau bis zum Weltreich, „in dem die Sonne nie unterging". Aus seiner Kaffeehaus- und Zuckerbäckerkultur und der kaiserlichen Zitrussammlung von Schönbrunn ging diese Torte hervor.</p>
+    </div>
+  </div>
+  <div class="wrap ges-intro">
+    <div class="reveal">
+      <div class="eyebrow" data-i="t73" data-en="Two strands, one cake">Zwei Stränge, eine Torte</div>
+      <h2 class="serif" data-i="t74" data-en="A dynasty — and a <em>garden of gold</em>">Eine Dynastie — und ein <em>Garten aus Gold</em></h2>
+      <p data-i="t75" data-en="The story of the Habsburger Torte runs on two strands: the House of Habsburg, which ruled Europe for over six centuries — and the imperial citrus collection of Schönbrunn, <em>from which this cake draws its refreshing citrus aromas.</em>">Die Geschichte der Habsburger Torte läuft auf zwei Strängen: das Haus Habsburg, das über sechs Jahrhunderte Europa regierte — und die kaiserliche Zitrussammlung von Schönbrunn, <em>aus der diese Torte ihre erfrischenden Zitrusaromen erhält.</em></p>
+    </div>
+    <div class="ges-strands reveal d1">
+      <div class="strand"><h5 data-i="t76" data-en="The dynasty">Die Dynastie</h5><p data-i="t77" data-en="From the Habichtsburg in Aargau in the 13th century to a world empire &lsquo;on which the sun never set&rsquo; under Charles V — over 600 years of rule.">Von der Habichtsburg im Aargau des 13. Jahrhunderts bis zum Weltreich, „in dem die Sonne nie unterging", unter Karl V. — über 600 Jahre Herrschaft.</p></div>
+      <div class="strand"><h5 data-i="t78" data-en="The collection">Die Sammlung</h5><p data-i="t79" data-en="Nearly 500 years of imperial citrus tradition — from classic oranges and bitter oranges to rare bergamot and Buddha&rsquo;s hand — preserved in the second-largest baroque orangery in the world.">Die Fast 500 Jahre kaiserliche Zitrustradition — von klassischen Orangen und Pomeranzen bis hin zu rarer Bergamotte und Buddhas Hand — bewahrt in der zweitgrößten Barock-Orangerie der Welt.</p></div>
+    </div>
+  </div>
+</section>
+<section class="pad" style="background:var(--ivory)">
+  <div class="wrap">
+    <div class="tline">
+      <div class="te reveal"><div class="yr">1273</div><h4 data-i="t80" data-en="The rise of the House">Der Aufstieg des Hauses</h4><p data-i="t81" data-en="Rudolf I is elected King of the Romans and secures the duchies of Austria and Styria for the family. From the ancestral Habichtsburg in Aargau, the house rises to a world power.">Rudolf I. wird zum römisch-deutschen König gewählt und sichert der Familie die Herzogtümer Österreich und Steiermark. Vom Stammsitz Habichtsburg im Aargau steigt das Geschlecht zur Weltmacht auf.</p></div>
+      <div class="te reveal"><div class="yr">1542</div><h4 data-i="t82" data-en="The golden apples">Die goldenen Äpfel</h4><p data-i="t83" data-en="The first orange trees are cultivated in the gardens of Vienna&rsquo;s Hofburg. In the Baroque, citrus fruits are the &lsquo;golden apples of the Hesperides&rsquo; — emblems of power, wealth and eternal spring.">Erste Orangenbäume werden in den Gärten der Wiener Hofburg kultiviert. Zitrusfrüchte gelten im Barock als „goldene Äpfel der Hesperiden" — Sinnbild für Macht, Reichtum und ewigen Frühling.</p></div>
+      <div class="te reveal"><div class="yr">1647</div><h4 data-i="t84" data-en="Citrus at Schönbrunn">Zitrus in Schönbrunn</h4><p data-i="t85" data-en="Orange trees are first recorded at the site of today&rsquo;s Schönbrunn Palace. The imperial collection grows — until the second Turkish siege of 1683 largely destroys it. That same year, Vienna&rsquo;s first coffee houses open.">Am Standort des heutigen Schlosses Schönbrunn werden erstmals Orangenbäume erwähnt. Die kaiserliche Sammlung wächst — bis die Zweite Türkenbelagerung 1683 sie weitgehend zerstört. Im selben Jahr eröffnen in Wien die ersten Kaffeehäuser.</p></div>
+      <div class="te reveal"><div class="yr serif" style="font-size:clamp(26px,2.8vw,36px)" data-i="t86" data-en="18th c.">18. Jh.</div><h4 data-i="t87" data-en="Franz Stephen and the Orangery">Franz I. Stephan und die Orangerie</h4><p data-i="t88" data-en="Under Emperor Franz Stephen the collection grows enormously. He builds the monumental Orangery with underfloor heating — the third largest in the world after Versailles and Potsdam. With Maria Theresa he founds the House of Habsburg-Lorraine.">Unter Kaiser Franz I. Stephan wächst die Sammlung gewaltig. Er lässt die monumentale Orangerie mit Fußbodenheizung errichten — nach Versailles und Potsdam die drittgrößte der Welt. Mit Maria Theresia begründet er das Haus Habsburg-Lothringen.</p></div>
+      <div class="te reveal"><div class="yr">1866</div><h4 data-i="t89" data-en="876 trees">876 Bäume</h4><p data-i="t90" data-en="The citrus collection numbers 876 trees — oranges, lemons, bitter oranges, bergamot, Buddha&rsquo;s hand. Their blossom and fruit form the backdrop to opulent imperial receptions in the Orangery.">Die Zitrussammlung umfasst 876 Bäume — Orangen, Zitronen, Pomeranzen, Bergamotte, Buddhas Hand. Ihre Blüten und Früchte bilden die Kulisse prunkvoller kaiserlicher Empfänge in der Orangerie.</p></div>
+      <div class="te reveal"><div class="yr">1918</div><h4 data-i="t91" data-en="The end of the monarchy">Das Ende der Monarchie</h4><p data-i="t92" data-en="Defeat in the First World War ends the dual monarchy. Emperor Karl I renounces government and the republic is proclaimed — after more than 600 years of Habsburg rule.">Die Niederlage im Ersten Weltkrieg beendet die Doppelmonarchie. Kaiser Karl I. verzichtet auf die Regierungsgeschäfte, die Republik wird ausgerufen — nach über 600 Jahren Habsburgerherrschaft.</p></div>
+      <div class="te reveal"><div class="yr serif" data-i="t93" data-en="Today">Heute</div><h4 data-i="t94" data-en="The return">Die Wiederkehr</h4><p data-i="t95" data-en="The House of Habsburg-Lorraine endures to this day. In its spirit, the Habsburger Torte unites the imperial citrus legacy with white chocolate — made by hand, layer by layer, for tables around the world.">Das Haus Habsburg-Lothringen besteht bis heute fort. In seinem Geist vereint die Habsburger Torte das kaiserliche Zitrus-Erbe mit weißer Schokolade — von Hand gefertigt, Schicht für Schicht, für Tafeln in aller Welt.</p></div>
+    </div>
+  </div>
+</section>
+<section class="pad" style="background:var(--espresso)">
+  <div class="wrap ges-close reveal">
+    <div class="q" data-i="t96" data-en="&lsquo;An empire may fall — a good recipe survives it.&rsquo;">„Ein Reich mag vergehen — ein gutes Rezept überlebt es."</div>
+    <small data-i="t97" data-en="Viennese confectioners&rsquo; wisdom">Wiener Zuckerbäcker-Weisheit</small>
+  </div>
+</section>
+</main>
+
+<!-- ============ KONTAKT ============ -->
+<main data-page="kontakt" hidden>
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow" data-i="t98" data-en="Contact">Kontakt</div>
+    <h1 class="serif" data-i="t99" data-en="The <em>House</em> of Habsburger Torte">Das <em>Haus</em> Habsburger Torte</h1>
+    <p data-i="t100" data-en="Two names lead the manufactory. For enquiries, press and partnerships you will find us in Vienna.">Zwei Namen f&uuml;hren die Manufaktur. F&uuml;r Anfragen, Presse und Partnerschaften finden Sie uns in Wien.</p>
+  </div>
+</section>
+<section class="pad" style="background:var(--ivory)">
+  <div class="wrap team-stack">
+    <div class="kar-people">
+    <div class="kar-card reveal">
+      <div class="kar-photo"><div class="slot"><image-slot id="konstantin" shape="rect" src="uploads/konstantin.jpg" placeholder="Portr&auml;t &mdash; Konstantin Habsburg-Lothringen"></image-slot></div></div>
+      <h3 class="serif">Konstantin Habsburg-Lothringen</h3>
+      <div class="kar-role" data-i="t101" data-en="Management &amp; Business Development">Gesch&auml;ftsf&uuml;hrung &amp; Unternehmensentwicklung</div>
+      <p class="kar-bio" data-i="t102" data-en="He steers the strategic direction of the brand. Konstantin Habsburg-Lothringen unites the historical heritage of the Habsburger Torte with modern corporate leadership and drives the growth of the company.">Er steuert die strategische Ausrichtung der Marke. Konstantin Habsburg-Lothringen verbindet das historische Erbe der Habsburger Torte mit moderner Unternehmensf&uuml;hrung und treibt das Wachstum des Unternehmens voran.</p>
+    </div>
+    <div class="kar-card reveal d1">
+      <div class="kar-photo"><div class="slot"><img src="uploads/slot-kann.webp" alt="Portr&auml;t &mdash; Dr. Johann Sebastian Kann MBA" style="width:100%;height:100%;object-fit:cover;"></div></div>
+      <h3 class="serif">Dr. Johann Sebastian Kann, MBA</h3>
+      <div class="kar-role" data-i="t103" data-en="Management &amp; Finance">Gesch&auml;ftsf&uuml;hrung &amp; Finanzen</div>
+      <p class="kar-bio" data-i="t104" data-en="He directs the commercial and financial fortunes of the company. Dr. Johann Sebastian Kann MBA contributes his long-standing economic expertise to sustainably expand the market presence of the Habsburger Torte and to secure a solid economic basis for its growth.">Er leitet die kaufm&auml;nnischen und finanziellen Geschicke des Unternehmens. Dr. Johann Sebastian Kann MBA bringt seine langj&auml;hrige Wirtschaftsexpertise ein, um die Marktpr&auml;senz der Habsburger Torte nachhaltig auszubauen und eine solide wirtschaftliche Basis f&uuml;r das Wachstum zu sichern.</p>
+    </div>
+    </div>
+    <div class="kar-copy">
+      <div class="eyebrow reveal" data-i="t105" data-en="Craft, heritage and clarity">Handwerk, Erbe und Klarheit</div>
+      <h2 class="serif reveal d1" data-i="t106" data-en="The <em>foundation</em> of our manufactory">Das <em>Fundament</em> unserer Manufaktur</h2>
+      <p class="reveal d2" data-i="t107" data-en="Behind Habsburger Torte Original stands an experienced leadership duo that unites economic precision with living tradition. Business leadership and strategic corporate development lie with Konstantin Habsburg-Lothringen, who contributes his expertise in strategy and international sales. He is supported by Dr. Johann Sebastian Kann MBA, whose economic expertise secures the solid commercial and financial foundation of the brand.">Hinter der Habsburger Torte Original steht ein erfahrenes F&uuml;hrungs-Duo, das wirtschaftliche Pr&auml;zision mit gelebter Tradition verbindet. Die gesch&auml;ftliche Leitung und strategische Unternehmensentwicklung liegen bei Konstantin Habsburg-Lothringen, der seine Expertise in Strategie und Internationalem Vertrieb einbringt. Unterst&uuml;tzt wird er von Dr. Johann Sebastian Kann MBA, der als Wirtschaftsexperte das solide kaufm&auml;nnische und finanzielle Fundament der Marke sichert.</p>
+      <p class="reveal d3" data-i="t108" data-en="Under their joint leadership the manufactory combines the discipline of business with the patience of the craft.">Unter ihrer gemeinsamen F&uuml;hrung verbindet die Manufaktur die Disziplin des Unternehmens mit der Geduld des Handwerks.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand"><img class="logo" src="uploads/logo-crown.png" alt="Wappen" width="207" height="112">Habsburger Torte</div>
+        <p data-i="t109" data-en="An imperial cake of the finest white chocolate, velvety light buttercream and choice citrus notes. Masterfully made in Vienna &mdash; served around the world.">Eine kaiserliche Torte aus feinster wei&szlig;er Schokolade, samtiger heller Buttercreme und erlesenen Zitrusnoten. Meisterhaft hergestellt in Wien &mdash; serviert in aller Welt.</p>
+      </div>
+      <div class="foot-col"><h5 data-i="t110" data-en="House">Haus</h5><a href="#produkte" data-nav data-i="t1" data-en="Shop">Shop</a><a href="#geschichte" data-nav data-i="t111" data-en="History">Geschichte</a><a href="#kontakt" data-nav data-i="t112" data-en="Contact">Kontakt</a></div>
+      <div class="foot-col"><h5 data-i="t159" data-en="Social Media">Social Media</h5><a href="#">Instagram</a><a href="#">Telegram</a></div>
+    </div>
+    <div class="foot-bot">
+      <nav class="foot-legal" aria-label="Rechtliches"><a href="agb.html" data-i="t160" data-en="Terms &amp; Conditions">AGB</a><a href="datenschutz.html" data-i="t113" data-en="Privacy Policy">Datenschutzerkl&auml;rung</a><a href="impressum.html" data-i="t114" data-en="Imprint">Impressum</a></nav>
+      <span data-i="t115" data-en="&copy; Habsburger Torte, Vienna &middot; All rights reserved">&copy; Habsburger Torte, Wien &middot; Alle Rechte vorbehalten</span>
+    </div>
+  </div>
+</footer>
+
+<!-- KONTO -->
+<div id="authModal" role="dialog" aria-modal="true" aria-label="Konto">
+  <div class="chk-card auth-card">
+    <button class="dr-close chk-x" id="authClose" aria-label="Schließen">×</button>
+    <div id="authView">
+      <div class="auth-tabs">
+        <button type="button" id="tLogin" class="on" data-i="t164" data-en="Sign in">Anmelden</button>
+        <button type="button" id="tReg" data-i="t165" data-en="Register">Registrieren</button>
+      </div>
+      <div class="auth-mark"><img src="uploads/logo-crown.png" alt="Wappen" width="207" height="112"></div>
+      <div class="eyebrow"><span class="m-login" data-i="t166" data-en="Welcome back">Willkommen zurück</span><span class="m-reg" data-i="t167" data-en="New account">Neues Konto</span></div>
+      <h3 class="auth-h"><span class="m-login" data-i="t164" data-en="Sign in">Anmelden</span><span class="m-reg" data-i="t165" data-en="Register">Registrieren</span></h3>
+      <p class="auth-sub"><span class="m-login" data-i="t168" data-en="Sign in to your account.">Melden Sie sich bei Ihrem Konto an.</span><span class="m-reg" data-i="t169" data-en="Create your imperial account.">Legen Sie Ihr kaiserliches Konto an.</span></p>
+      <button class="auth-goog" type="button" id="googBtn"><svg viewBox="0 0 48 48"><path fill="#4F2F28" d="M24 9.5c3.3 0 6.2 1.1 8.5 3.3l6.3-6.3C34.9 2.7 29.8.5 24 .5 14.6.5 6.5 5.9 2.6 13.9l7.4 5.7C11.9 13.4 17.4 9.5 24 9.5z"/><path fill="#4F2F28" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.5 3-2.2 5.5-4.7 7.2l7.2 5.6c4.2-3.9 6.6-9.6 6.6-16.3z"/><path fill="#F7E1DA" d="M10 28.4c-.5-1.5-.8-3-.8-4.6s.3-3.1.8-4.6l-7.4-5.7C1 16.5 0 20.1 0 23.8s1 7.3 2.6 10.4l7.4-5.8z"/><path fill="#4F2F28" d="M24 47.5c6.5 0 11.9-2.1 15.9-5.8l-7.2-5.6c-2 1.4-4.6 2.2-8.7 2.2-6.6 0-12.1-3.9-14-9.3l-7.4 5.8C6.5 42.1 14.6 47.5 24 47.5z"/></svg><span data-i="t170" data-en="Continue with Google">Mit Google fortfahren</span></button>
+      <div class="auth-or" data-i="t171" data-en="or">oder</div>
+      <form id="authForm">
+        <div class="fld m-reg"><label data-i="t172" data-en="Name">Name</label><input type="text" id="fName" autocomplete="name" placeholder="Vor- und Nachname" data-en-ph="First and last name" data-ru-ph="Имя и фамилия" data-zh-ph="姓名" data-ar-ph="الاسم الكامل"></div>
+        <div class="fld"><label data-i="t163" data-en="E-mail">E-Mail</label><input type="email" id="fEmail" autocomplete="email" required placeholder="ihre@email.at" data-en-ph="your@email.com" data-ru-ph="ваш@email.ru" data-ar-ph="you@email.com"></div>
+        <div class="fld"><label data-i="t173" data-en="Password">Passwort</label><input type="password" id="fPass" required minlength="6" placeholder="••••••••" autocomplete="current-password"></div>
+        <button class="btn gold" type="submit" id="sbtBtn" style="width:100%"><span class="m-login" data-i="t164" data-en="Sign in">Anmelden</span><span class="m-reg" data-i="t174" data-en="Create account">Konto erstellen</span></button>
+        <div class="auth-msg" id="authMsg"></div>
+      </form>
+      <p class="auth-foot"><span class="m-login"><span data-i="t175" data-en="No account yet?">Noch kein Konto?</span> <button type="button" class="authSwitch" data-i="t165" data-en="Register">Registrieren</button></span><span class="m-reg"><span data-i="t176" data-en="Already have an account?">Schon ein Konto?</span> <button type="button" class="authSwitch" data-i="t164" data-en="Sign in">Anmelden</button></span></p>
+      <p class="auth-msg ok" id="authConfirm" hidden data-i="t177" data-en="Almost done — please confirm the e-mail we just sent you.">Fast geschafft — bestätigen Sie bitte die E-Mail, die wir Ihnen gesendet haben.</p>
+    </div>
+    <div id="accView" style="display:none;text-align:center">
+      <div class="auth-avatar" id="accAvatar">?</div>
+      <h3 class="auth-h" id="accName" style="font-size:27px">—</h3>
+      <p class="auth-sub" id="accEmail">—</p>
+      <button class="auth-out" type="button" id="logoutBtn" data-i="t178" data-en="Sign out">Abmelden</button>
+    </div>
+  </div>
+</div>
+
+<!-- CART DRAWER -->
+<div id="overlay"></div>
+<aside id="drawer" aria-label="Warenkorb">
+  <div class="dr-head"><h3 class="serif" data-i="t116" data-en="Cart">Warenkorb</h3><button class="dr-close" id="drClose" aria-label="Schließen">×</button></div>
+  <div class="dr-items" id="drItems"></div>
+  <div class="dr-foot">
+    <div class="dr-row"><span data-i="t117" data-en="Subtotal">Zwischensumme</span><span id="sumSub">€ 0,00</span></div>
+    <div class="dr-row"><span data-i="t118" data-en="Shipping">Versand</span><span id="sumShip">—</span></div>
+    <div class="dr-row total"><span data-i="t119" data-en="Total">Gesamt</span><span id="sumTotal" class="serif">€ 0,00</span></div>
+    <button class="btn gold" id="toCheckout" disabled><span data-i="t120" data-en="Checkout">Zur Kasse</span></button>
+    <div class="dr-note" data-i="t121" data-en="Free shipping from € 60 · Delivery in 2–4 days">Kostenloser Versand ab € 60 · Lieferung in 2–4 Tagen</div>
+  </div>
+</aside>
+
+<!-- CHECKOUT -->
+<div id="checkout">
+  <div class="chk-card">
+    <button class="dr-close chk-x" id="chkClose" aria-label="Schließen">×</button>
+    <div class="chk-steps"><b class="on" data-i="t122" data-en="1 · Delivery">1 · Lieferung</b><b data-i="t123" data-en="2 · Payment">2 · Zahlung</b><b data-i="t124" data-en="3 · Done">3 · Fertig</b></div>
+    <form class="chk-step on" id="shipForm">
+      <h3 data-i="t125" data-en="Delivery address">Lieferadresse</h3>
+      <div class="fld-row">
+        <div class="fld"><label data-i="t126" data-en="First name">Vorname</label><input name="Vorname" required autocomplete="given-name"></div>
+        <div class="fld"><label data-i="t127" data-en="Last name">Nachname</label><input name="Nachname" required autocomplete="family-name"></div>
+      </div>
+      <div class="fld"><label data-i="t163" data-en="E-mail">E-Mail</label><input name="EMail" type="email" required autocomplete="email"></div>
+      <div class="fld"><label data-i="t128" data-en="Phone">Telefon</label><input name="Telefon" type="tel" autocomplete="tel"></div>
+      <div class="fld"><label data-i="t129" data-en="Street & number">Straße & Hausnummer</label><input name="Strasse" required autocomplete="street-address"></div>
+      <div class="fld-row">
+        <div class="fld"><label data-i="t130" data-en="Postal code">PLZ</label><input name="PLZ" required autocomplete="postal-code"></div>
+        <div class="fld"><label data-i="t131" data-en="City">Stadt</label><input name="Stadt" required autocomplete="address-level2"></div>
+      </div>
+      <div class="fld"><label data-i="t132" data-en="Country">Land</label><input name="Land" required autocomplete="country-name" value="Österreich"></div>
+      <button class="btn gold" type="submit" style="width:100%"><span data-i="t133" data-en="Continue to payment">Weiter zur Zahlung</span></button>
+    </form>
+    <form class="chk-step" id="payForm">
+      <h3 data-i="t134" data-en="Payment">Zahlung</h3>
+      <div class="chk-err" id="payErr"></div>
+      <div class="paytabs">
+        <div class="paytab on" data-method="card" data-i="t135" data-en="Card">Karte</div>
+        <div class="paytab" data-method="bank" data-i="t136" data-en="Bank transfer">Überweisung</div>
+      </div>
+      <div class="paymethod on" id="pmCard">
+        <div class="paybadges"><span>VISA</span><span>Mastercard</span><span>Amex</span><span>Apple Pay</span></div>
+        <div class="fld"><label data-i="t137" data-en="Cardholder">Karteninhaber</label><input id="cardName" autocomplete="cc-name" placeholder="Maria Muster" data-en-ph="Jane Doe" data-ru-ph="Иван Иванов" data-zh-ph="持卡人姓名" data-ar-ph="الاسم كما في البطاقة"></div>
+        <div class="fld"><label data-i="t138" data-en="Card number">Kartennummer</label><input id="cardNum" inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456"></div>
+        <div class="fld-row">
+          <div class="fld"><label data-i="t139" data-en="Expiry">Gültig bis</label><input id="cardExp" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/JJ" data-en-ph="MM/YY" data-ru-ph="ММ/ГГ" data-zh-ph="月/年" data-ar-ph="شهر/سنة"></div>
+          <div class="fld">
+<label>CVC</label><input id="cardCvc" inputmode="numeric" autocomplete="cc-csc" placeholder="123"></div>
+        </div>
+      </div>
+      <div class="paymethod" id="pmBank">
+        <p style="font-size:14.5px;color:var(--espresso-soft);margin-bottom:16px" data-i="t140" data-en="Transfer the total to the account below. Please state your order number as the reference — we ship as soon as payment arrives.">Überweisen Sie den Gesamtbetrag auf das untenstehende Konto. Bitte geben Sie Ihre Bestellnummer als Verwendungszweck an — wir versenden, sobald die Zahlung eingeht.</p>
+        <div class="bank-box">
+          <div class="bank-row"><span data-i="t141" data-en="Recipient">Empfänger</span><span>Habsburger Torte GmbH</span></div>
+          <div class="bank-row"><span>IBAN</span><span>AT48 3200 0000 1234 5678</span></div>
+          <div class="bank-row"><span>BIC</span><span>RLNWATWWXXX</span></div>
+          <div class="bank-row"><span data-i="t142" data-en="Bank">Bank</span><span>Raiffeisenbank Wien</span></div>
+          <div class="bank-row"><span data-i="t143" data-en="Reference">Verwendungszweck</span><span id="bankRef">—</span></div>
+          <div class="bank-row"><span data-i="t144" data-en="Amount">Betrag</span><span id="bankAmt">€ 0,00</span></div>
+        </div>
+      </div>
+      <label class="chk-consent" style="display:flex;gap:10px;align-items:flex-start;margin:4px 0 14px;font-size:13px;color:var(--espresso-soft);line-height:1.5"><input type="checkbox" id="agbOk" style="margin-top:3px;width:16px;height:16px;flex:none"><span data-i="t153" data-en='I accept the <a href="agb.html" target="_blank">Terms &amp; Conditions</a> and the right of withdrawal.'>Ich akzeptiere die <a href="agb.html" target="_blank">AGB</a> und die Widerrufsbelehrung.</span></label>
+      <label class="chk-consent" style="display:flex;gap:10px;align-items:flex-start;margin:0 0 18px;font-size:13px;color:var(--espresso-soft);line-height:1.5"><input type="checkbox" id="dsOk" style="margin-top:3px;width:16px;height:16px;flex:none"><span data-i="t154" data-en='I have read the <a href="datenschutz.html" target="_blank">Privacy Policy</a>.'>Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen.</span></label>
+      <button class="btn gold" type="submit" id="payBtn" style="width:100%"><span data-i="t145" data-en="Place order · " id="payLabel">Bestellung aufgeben · </span><span class="pay-amt"></span></button>
+      <div class="chk-secure"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="10" width="16" height="10" rx="1"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg><span data-i="t146" data-en="Your order is sent securely to our office by e-mail.">Ihre Bestellung wird sicher per E-Mail an unser Büro gesendet.</span></div>
+    </form>
+    <div class="chk-step" id="doneStep">
+      <div class="chk-success">
+        <div class="ok">✓</div>
+        <h3 class="serif" data-i="t147" data-en="Thank you!">Vielen Dank!</h3>
+        <p id="doneMsg" data-i="t148" data-en="Your order has been received and sent to our office. A confirmation will follow by e-mail.">Ihre Bestellung ist eingegangen und wurde an unser Büro gesendet. Eine Bestätigung folgt per E-Mail.</p>
+        <div class="ord"><span data-i="t149" data-en="Order">Bestellung</span> <span id="orderNo"></span></div>
+        <button class="btn gold" id="chkDone"><span data-i="t150" data-en="Continue browsing">Weiter stöbern</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* intro */
+window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('intro').classList.add('done'),1230)});
+/* router */
+const header=document.getElementById('header');
+const pages=[...document.querySelectorAll('[data-page]')];
+const navLinks=[...document.querySelectorAll('[data-nav]')];
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+function observeActive(name){document.querySelector('[data-page="'+name+'"]').querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el))}
+function setHeaderMode(name){header.classList.toggle('solid', name!=='home' || scrollY>60)}
+function route(){
+  let name=(location.hash||'#home').replace('#','');
+  if(!pages.some(p=>p.dataset.page===name))name='home';
+  pages.forEach(p=>p.hidden=p.dataset.page!==name);
+  navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+name));
+  window.scrollTo(0,0);
+  setHeaderMode(name);
+  observeActive(name);
+}
+addEventListener('hashchange',route);
+addEventListener('scroll',()=>setHeaderMode((location.hash||'#home').replace('#','')));
+route();
+/* mobile nav */
+const mnav=document.getElementById('mnav');
+document.getElementById('burger').onclick=()=>mnav.classList.add('open');
+document.getElementById('mnavX').onclick=()=>mnav.classList.remove('open');
+mnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mnav.classList.remove('open')));
+document.querySelectorAll('[data-scroll]').forEach(b=>b.addEventListener('click',()=>{const el=document.getElementById(b.dataset.scroll);if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'})}}));
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./i18n.js"></script>
+<script src="./shop.js"></script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#4F2F28"/><text x="50" y="60" font-family="Georgia,serif" font-size="46" fill="#FBF7EF" text-anchor="middle">H</text></svg></template>
+<!-- ============ BACKGROUND JAZZ ============ -->
+<audio id="bgm" loop preload="none" src="uploads/Clear View.mp3"></audio>
+<button id="bgmBtn" aria-label="Hintergrundmusik" title="Musik an/aus">
+  <span class="eq"><i></i><i></i><i></i><i></i></span>
+</button>
+<style>
+#bgmBtn{position:fixed;left:22px;bottom:22px;z-index:120;display:flex;align-items:center;gap:11px;padding:11px 17px 11px 15px;border:1px solid var(--color-border-strong);border-radius:40px;background:rgba(79,47,40,.82);backdrop-filter:blur(10px);color:var(--gold-light);font-family:var(--sans);font-size:11px;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;transition:transform .4s cubic-bezier(.16,1,.3,1),background .4s,border-color .4s,opacity .4s;box-shadow:0 8px 26px rgba(79,47,40,.28)}
+#bgmBtn:hover{transform:translateY(-2px);border-color:var(--gold-light);background:rgba(79,47,40,.94)}
+#bgmBtn .eq{display:flex;align-items:flex-end;gap:2.5px;height:15px}
+#bgmBtn .eq i{width:2.5px;height:100%;background:var(--gold-light);transform-origin:bottom;transform:scaleY(.28);border-radius:2px}
+#bgmBtn.playing .eq i{animation:eqBar .9s ease-in-out infinite}
+#bgmBtn.playing .eq i:nth-child(2){animation-delay:-.5s}
+#bgmBtn.playing .eq i:nth-child(3){animation-delay:-.2s}
+#bgmBtn.playing .eq i:nth-child(4){animation-delay:-.7s}
+#bgmBtn:not(.playing){opacity:.72}
+#bgmBtn:not(.playing) .lbl{opacity:.7}
+@keyframes eqBar{0%,100%{transform:scaleY(.28)}50%{transform:scaleY(1)}}
+@media(max-width:760px){#bgmBtn{left:14px;bottom:14px}}
+</style>
+<script>
+(function(){
+  var a=document.getElementById('bgm'),btn=document.getElementById('bgmBtn');
+  if(!a||!btn)return;
+  a.volume=0.2; // background level — quiet
+  var LS_ON='bgmOn',LS_T='bgmTime';
+  var want=localStorage.getItem(LS_ON)!=='0'; // default on unless user turned it off
+  try{var t=parseFloat(localStorage.getItem(LS_T));if(t>0)a.currentTime=t;}catch(e){}
+  function paint(){btn.classList.toggle('playing',!a.paused);}
+  function start(){a.play().then(paint).catch(function(){});}
+  function stop(){a.pause();paint();}
+  var armed=false;
+  function arm(){ // browsers block autoplay until a gesture — start on first interaction
+    if(armed)return;armed=true;
+    var go=function(){if(want)start();off();};
+    var off=function(){['pointerdown','keydown','touchstart','wheel'].forEach(function(ev){window.removeEventListener(ev,go);});};
+    ['pointerdown','keydown','touchstart','wheel'].forEach(function(ev){window.addEventListener(ev,go,{passive:true});});
+  }
+  btn.addEventListener('click',function(e){
+    e.stopPropagation();
+    if(a.paused){want=true;localStorage.setItem(LS_ON,'1');start();}
+    else{want=false;localStorage.setItem(LS_ON,'0');stop();}
+  });
+  a.addEventListener('play',paint);a.addEventListener('pause',paint);
+  setInterval(function(){if(!a.paused)try{localStorage.setItem(LS_T,a.currentTime);}catch(e){}},4000);
+  window.addEventListener('beforeunload',function(){try{localStorage.setItem(LS_T,a.currentTime);}catch(e){}});
+  if(want){start();arm();}else{paint();}
+})();
+</script>
+</body>
+</html>
